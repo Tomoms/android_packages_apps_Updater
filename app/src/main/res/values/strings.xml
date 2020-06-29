@@ -161,4 +161,11 @@
     <string name="menu_beta_channel">Install beta versions</string>
     <!-- updater_server_url_beta is then overlayed in the device tree -->
     <string name="updater_server_url_beta" translatable="false">http://0.0.0.0</string>
+
+    <string name="local_update_import">Local update</string>
+    <string name="local_update_import_progress">Importing local update\u2026</string>
+    <string name="local_update_import_success">%1$s has been imported. Do you want to install it?</string>
+    <string name="local_update_import_failure">Failed to import local update</string>
+    <string name="local_update_import_install">Install</string>
+    <string name="local_update_name">Local update</string>
 </resources>
