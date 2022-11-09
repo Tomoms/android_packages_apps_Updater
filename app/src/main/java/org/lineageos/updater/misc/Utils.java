@@ -159,7 +159,12 @@ public class Utils {
 
         String serverUrl = SystemProperties.get(Constants.PROP_UPDATER_URI);
         if (serverUrl.trim().isEmpty()) {
-            serverUrl = context.getString(R.string.updater_server_url);
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+            if (prefs.getBoolean(Constants.PREF_BETA_CHANNEL, false)) {
+                serverUrl = context.getString(R.string.updater_server_url_beta);
+            } else {
+                serverUrl = context.getString(R.string.updater_server_url);
+            }
         }
 
         return serverUrl.replace("{device}", device)

@@ -157,4 +157,8 @@
     <string name="info_dialog_title">Did you know?</string>
     <string name="info_dialog_message">LineageOS updates are full installation packages. That means you can always install only the latest update, even if you skipped some in between!</string>
     <string name="info_dialog_ok">Thanks for the info!</string>
+
+    <string name="menu_beta_channel">Install beta versions</string>
+    <!-- updater_server_url_beta is then overlayed in the device tree -->
+    <string name="updater_server_url_beta" translatable="false">http://0.0.0.0</string>
 </resources>
