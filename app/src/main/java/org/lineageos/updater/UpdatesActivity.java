@@ -606,7 +606,6 @@ public class UpdatesActivity extends UpdatesListActivity implements UpdateImport
                 R.id.preferences_metered_network_warning);
         SwitchCompat abPerfMode = view.findViewById(R.id.preferences_ab_perf_mode);
         SwitchCompat updateRecovery = view.findViewById(R.id.preferences_update_recovery);
-        SwitchCompat betaChannel = view.findViewById(R.id.preferences_beta_channel);
 
         if (!Utils.isABDevice()) {
             abPerfMode.setVisibility(View.GONE);
@@ -618,7 +617,6 @@ public class UpdatesActivity extends UpdatesListActivity implements UpdateImport
         meteredNetworkWarning.setChecked(prefs.getBoolean(Constants.PREF_METERED_NETWORK_WARNING,
                 prefs.getBoolean(Constants.PREF_MOBILE_DATA_WARNING, true)));
         abPerfMode.setChecked(prefs.getBoolean(Constants.PREF_AB_PERF_MODE, false));
-        betaChannel.setChecked(prefs.getBoolean(Constants.PREF_BETA_CHANNEL, false));
 
         if (getResources().getBoolean(R.bool.config_hideRecoveryUpdate)) {
             // Hide the update feature if explicitly requested.
@@ -659,7 +657,6 @@ public class UpdatesActivity extends UpdatesListActivity implements UpdateImport
                             .putBoolean(Constants.PREF_METERED_NETWORK_WARNING,
                                     meteredNetworkWarning.isChecked())
                             .putBoolean(Constants.PREF_AB_PERF_MODE, abPerfMode.isChecked())
-                            .putBoolean(Constants.PREF_BETA_CHANNEL, betaChannel.isChecked())
                             .apply();
 
                     if (Utils.isUpdateCheckEnabled(this)) {
