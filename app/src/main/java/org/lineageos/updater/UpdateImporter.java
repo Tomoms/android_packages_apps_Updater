@@ -126,7 +126,7 @@ public class UpdateImporter {
         final File downloadDir = Utils.getDownloadPath(activity);
         final File outFile = new File(downloadDir, FILE_NAME);
         if (outFile.exists()) {
-            outFile.delete();
+            return outFile;
         }
         final FileOutputStream oStream = new FileOutputStream(outFile);
 
