@@ -17,6 +17,7 @@ package org.lineageos.updater.controller;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.util.Log;
@@ -49,9 +50,14 @@ class UpdateInstaller {
     private final Context mContext;
     private final UpdaterController mUpdaterController;
 
+    private final PowerManager.WakeLock mWakeLock;
+
     private UpdateInstaller(Context context, UpdaterController controller) {
         mContext = context.getApplicationContext();
         mUpdaterController = controller;
+        PowerManager powerManager = context.getSystemService(PowerManager.class);
+        mWakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Updater:wakelock");
+        mWakeLock.setReferenceCounted(false);
     }
 
     static synchronized UpdateInstaller getInstance(Context context,
@@ -100,6 +106,7 @@ class UpdateInstaller {
     }
 
     private void installPackage(File update, String downloadId) {
+        mWakeLock.acquire();
         try {
             android.os.RecoverySystem.installPackage(mContext, update);
         } catch (IOException e) {
@@ -107,6 +114,8 @@ class UpdateInstaller {
             mUpdaterController.getActualUpdate(downloadId)
                     .setStatus(UpdateStatus.INSTALLATION_FAILED);
             mUpdaterController.notifyUpdateChange(downloadId);
+        } finally {
+            mWakeLock.release();
         }
     }
 
