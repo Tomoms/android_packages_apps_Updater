@@ -38,7 +38,7 @@ a JSON with the following structure:
 The `datetime` attribute is the build date expressed as UNIX timestamp.  
 The `files[0].filename` attribute is the name of the file to be downloaded.  
 The `files[0].os_patch_level` optional attribute is the security patch level of the OTA update.  
-The `files[0].os_sdk_level` optional attribute is the SDK level of the OTA update.  
+The `files[0].os_sdk_level` attribute is the SDK level of the OTA update.  
 The `files[0].ota_property_files` optional attribute is the `ota-property-files` value from `META-INF/com/android/metadata` of the OTA update.  
 The `files[0].sha256` attribute is a sha256 of the OTA update.  
 The `files[0].size` attribute is the size of the update expressed in bytes.  
